@@ -1,0 +1,790 @@
+******************************************         scala     **********************************************
+
+
+
+111111111111*****************************************      Understanding Conditional and looping statements in Scala     ***********************************111111111111111111
+
+
+#######     if-else condition   ################
+
+object project {
+
+  def main(args: Array[String]): Unit = {
+    // val name: String = "HELLO WELCOME TO SCALA SESSION"
+    var num: Int = 29
+
+    // println(name)
+    // println(num)
+
+    if (num % 2 == 0) {
+      println("Even number " + num)
+    } else {
+      println("Odd number " + num)
+    }
+  }
+}
+
+
+#######     while do while   ################
+
+
+object project {
+
+  def main(args: Array[String]): Unit = {
+    var num: Int = 8
+
+    println("While loop condition")
+    while (num <= 15) {
+      println("Number=" + num)
+      num += 1
+    }
+
+    println("do-While loop condition")
+    var num1: Int = 8
+
+    do {
+      println("Num=" + num1)
+      num1 += 1
+    } while (num1 < 9)
+  }
+}
+
+
+#######    for loop  ################
+
+object project {
+
+  def main(args: Array[String]): Unit = {
+    println("For loop using until keyword")
+    for (x <- 0 until 5) {
+      println("num=" + x)
+    }
+
+    println("For loop using to keyword")
+    for (a <- 1 to 3; b <- 0 to 2) {
+      println("a=" + a)
+      println("b=" + b)
+    }
+  }
+}
+
+
+#######    defining a function   ################
+
+object functions {
+
+  // define function using return statement
+  def add(x: Int, y: Int): Int = {
+    return x + y
+  }
+
+  // define function without using return statement
+  def sub(x: Int, y: Int): Int = {
+    x - y
+  }
+
+  // define inline function
+  def mult(x: Int, y: Int): Int = return x * y
+
+  // def inline without using return statement
+  def divide(x: Int, y: Int): Int = x / y
+
+  // def inline without using return type
+  def divide1(x: Int, y: Int) = x / y
+
+  // define main function
+  def main(args: Array[String]): Unit = {
+    println("Addition..." + add(10, 5))
+    println("Subtraction..." + sub(10, 5))
+    println("Multiply...." + mult(10, 5))
+    println("Division..." + divide(10, 5))
+    println("Division..." + divide1(10, 2))
+  }
+}
+
+
+
+#######     anonymous function   ################
+
+
+// Anonymous Function
+var add = (x: Int, y: Int) => x + y
+println("Addition..." + add(10, 5))
+
+
+
+#######     operator as function   ################
+
+
+// Operator as a function:
+object func {
+
+  def main(args: Array[String]): Unit = {
+    println(func2.*(5, 4))
+    println(func3.+(5, 4))
+  }
+}
+
+object func2 {
+
+  def *(x: Int, y: Int): Unit = {
+    println("Multiply...." + (x * y)) // without using return type
+  } // here the output will be () because it do not contain return statement
+}
+
+object func3 {
+
+  def +(x: Int, y: Int): Int = {
+    println("Addition...")
+    return (x + y) // using return statement
+  }
+}
+
+
+
+#########   Currying Function   ############
+
+object func {
+
+  def main(args: Array[String]): Unit = {
+    // Calling currying function
+    println(add(10)(10))
+
+    val sum = add(30) // Calling Partial function work as wildcard Character
+    println(sum(25))
+
+    println("............")
+    // Calling another currying function
+    println(add3(20)(10))
+
+    val sum20 = add3(10) _ // Calling Parcial function work as wildcard Character
+    println(sum20(50))
+  }
+
+  // Currying function
+  def add(x: Int) = (y: Int) => x + y
+
+  // Another signature for function currying where partial apply can work
+  def add3(x: Int)(y: Int) = x + y // Parcial function
+}
+
+
+
+222222222222222*****************************************     Understanding basic data types in Scala: List, Set, Tuples & Map     ***********************************222222222222222222
+
+
+
+#######################   Set     #############################
+
+
+object list1 {
+ def main(args:Array[String]): Unit ={
+ println(set1)
+ println(set2)
+ println(set1++set2) //concatenate
+ println(set2+"Hiii...") //adding element in the set
+ println(set1.head)
+ println(set2.tail)
+ println(set2.isEmpty)
+ set2.foreach(println) //using for loop
+ for(sets<-set3 ){
+ println(sets)
+      }
+  }
+ var set1:Set[Int]=Set(1,2,3,4,5,6,7,8)
+ var set2:Set[String]=Set("Hello","Scala","Welcome")
+ var set3=Set(1,2,3,4,"Hello")
+ }
+
+
+
+########################    MAP    ###################
+
+
+
+object Main {
+
+
+
+
+ val mymap: Map[Int, String] = Map(801 -> "Max", 802 -> "Tom", 803 -> "Jack")
+
+
+
+
+ def main(args: Array[String]): Unit = {
+
+
+   println(mymap)
+
+
+
+
+   mymap.keys.foreach { key =>
+
+
+     println("key " + key)
+
+
+     println("Val " + mymap(key))
+
+
+   }
+
+
+
+
+   println(mymap.contains(801))
+
+
+   println(mymap.keySet)
+
+
+   println(mymap.values)
+
+
+ }
+
+
+}
+
+
+#######################   Dictionary    #############################
+
+object dict{
+ def main(args:Array[String]): Unit ={
+ println(dict1)
+ println(dict2)
+ println(dict1.keys) //printing all the keys
+ println(dict2.contains(104)) //checking the value is present or 
+not
+ println(dict1.values) //printing all the values
+ println(dict1++dict2) //concatenate
+ dict1.foreach(println)
+ //for printing keys and value
+ dict1.keys.foreach{key=>
+ println("Keys="+key)
+ println("Values="+dict1(key))
+    }
+  }
+ var dict1:Map[Int,String]=Map(101->"Hello",102->"Scala",103
+->"Welcome",102->"Data")
+ var dict2:Map[Int,String]=Map(104->"ETDS",105->"ML",106->"Scala")
+ }
+
+
+
+#######################   Tuples   #############################
+
+object tup{
+ def main(args:Array[String]):Unit={
+ println(t)
+ println(t1)
+ t1.productIterator.foreach(println)//using loop
+ println(t1._3)//printing the ele of given position
+ println(t._5)//printing the ele of given position
+ t.productIterator.foreach{
+      i=>println(i)
+    }
+ println(t2)
+ println(t2._4._1)//printing ele from nested tuple
+ }
+ var t=(1,2,3,"Hello","Scala")
+ var t1=Tuple4(1,2,34,5)
+ val t2=Tuple8(2,3,4,("Helo","World"),"Hi",1,3,4)
+ }
+
+
+#######################   List     #############################
+
+
+ object list2{
+ def main(args:Array[String]):Unit={
+ println("List of type int="+a)
+ println("List of type String="+b)
+ println("Hii"::b)// append at first Element
+ println("List of type dynamic="+c)
+ for(i<-c){
+ println("="+i)
+    }
+ a.foreach(println)//using for each loop
+ println("Empty list="+List(Nil))
+ println("Reverse="+a.reverse)
+ println("Creating list of values="+List.fill(2,3)(4,2,1))
+ println("Index="+b(2))
+ var sum:Int=0
+ a.foreach(sum+=_)
+ println("Sum of list="+sum)
+ println("Delimiter="+a.mkString(".")) //mkstring is use for giving 
+delimiter
+ }
+ var a:List[Int]=List(12,3,45,6)
+ var b:List[String]=List("Hello","Scala","Welcome")
+ val c=List(1,2,3,4,5,"Hello","Scala")
+ }
+
+
+
+
+
+333333333333333333**************************     Implementing class and constructor concepts       ********************************3333333333333333333333
+
+#######################    Normal class and Object     #############################
+
+
+class demo {
+ var no:Int=100;
+  var nameofcompany:String="Apple";
+  def show(): Unit ={
+ println("Name of the company= "+nameofcompany)
+ println("Total number of product="+no)
+  }
+ }
+ object main{
+ def main(args:Array[String]): Unit ={
+ var d1=new demo()
+    d1.show()
+  }
+ }
+
+
+
+#######################     Anonymous object   #############################
+
+
+class demo2{
+ var no: Int = 200;
+  var nameofcompany: String = "Samsung";
+  def show(): Unit = {
+ println("Name of the company= " + nameofcompany)
+ println("Total number of product=" + no)
+  }
+ }
+ object main2{
+ def main(args:Array[String]): Unit ={
+ new demo2().show() //Anonymous object
+ }
+ }
+
+
+#######################      Constructor   #############################
+
+
+ class demo3(var a:Int,var b:Int){
+  def add(): Unit ={
+    var c=a+b;
+    println("Addition="+c)
+  }
+  def multi(): Unit ={
+    var d=a*b
+    println("Multiplication="+d)
+  }
+ }
+ object main3{
+  def main(args:Array[String]): Unit ={
+    var ad=new demo3(10,20)
+    var ad1=new demo3(10,10)
+    ad.add()
+    ad1.add()
+    ad.multi()
+    ad1.multi()
+  }
+ }
+
+
+#######################                  Constructor  Overloading                  #############################
+
+
+class demo3(var a:Int,var b:Int){
+  var s:Int=30
+  def add(): Unit ={
+    var c=a+b;
+    println("Addition="+c)
+  }
+  def sub(): Unit ={
+    var d=a-s
+    println("Subtraction="+d)
+  }
+  //Auxiliary constructor i.e Overloading
+  def this(a:Int,b:Int,s:Int){
+    this(a,b)
+    this.s=s
+  }
+ }
+ object main3{
+  def main(args:Array[String]): Unit ={
+    var ad=new demo3(10,20,10)
+    var ad1=new demo3(10,10)
+    ad.add()
+    ad1.add()
+    ad.sub()
+    ad1.sub()
+  }
+ }
+
+
+
+
+
+4444444444444444444****************************************            Implementing the type of Inheritance                        ************************************4444444444444444444
+
+#######################      Single Level Inheritance #############################
+
+ //Single Inheritance with method override
+ class stud{
+  var name:String="Sam"
+  val age:Int=20
+  def disp(): Unit = {
+    println("Hello Scala")
+  }
+ }
+ class stud2 extends stud{
+  def show(): Unit = {
+    println("Name of student="+name)
+  }
+  override def disp(): Unit = {
+    println("Age=" + age)
+  }
+ }
+ object student{
+  def main(args:Array[String]): Unit = {
+    var s=new stud2()
+    var s1=new stud()
+    s.show()
+    s1.disp()
+    s.disp()
+  }
+ }
+
+
+
+#######################               Multi Level Inheritance          #############################
+
+
+//Multi-level inheritance
+ class number{
+  var no1:Int=10
+ }
+ class number1  extends number {
+  var no2:Int=20
+ }
+ class number2 extends number1{
+  var add=no1 + no2
+  def show(): Unit = {
+    println("Adition="+add)
+  }
+ }
+ object addition{
+  def main(args:Array[String]): Unit = {
+    var a=new number2()
+Page | 2
+    a.show()
+  }
+ }
+
+
+#######################            Multiple Inheritance: (2 parent with 1 )child                  ############################
+
+
+//trait keyword is use for Multiple inheritance
+ //trait is used to extend multiple parent claas with one single child 
+class
+ trait Printable {
+  def print() //Abstract method
+ }
+ trait Showable{
+  //def show()
+  var b:Int=10
+ }
+ class A6 extends Printable with Showable{
+  def print(): Unit ={
+    println("This is printable....")
+  }
+  //non-Abstract method
+  def show(): Unit ={
+    println("This is showable...."+b)
+  }
+ }
+ object scala{
+  def main(args:Array[String]): Unit ={
+    var a=new A6()
+    a.print()
+    a.show()
+  }
+ }
+
+
+##########      Using abstract class and trait together:
+ If you call trait first with extend error will occur   ######################
+
+
+//Using abstract and trait class together
+ trait printable {
+  def print() //Abstract method
+ }
+ abstract class showable{
+  //def show()
+  var b:Int=10
+ }
+ //always extend abstract class first than trait otherwise we will get error
+ class A1 extends printable with showable {
+  def print(): Unit ={
+    println("This is printable....")
+  }
+  //non-Abstract method
+  def show(): Unit ={
+    println("This is showable...."+b)
+  }
+ }
+ object scala1{
+  def main(args:Array[String]): Unit ={
+    var a=new A1()
+    a.print()
+    a.show()
+  }
+ }
+
+
+
+# If you call abstract class first with extend 
+
+
+//Using abstract and trait class together
+ trait printable {
+  def print() //Abstract method
+ }
+ abstract class showable{
+  //def show()
+  var b:Int=10
+ }
+ //always extend abstract class first than trait otherwise we will get error
+ class A1 extends showable with printable{
+  def print(): Unit ={
+    println("This is printable....")
+  }
+  //non-Abstract method
+  def show(): Unit ={
+    println("This is showable...."+b)
+  }
+ }
+ object scala1{
+  def main(args:Array[String]): Unit ={
+    var a=new A1()
+    a.print()
+    a.show()
+  }
+ }
+
+
+#########################         Hierarchical Inheritance: (1 parent with 2 child)                    ###################
+
+
+//Hierarchical inheritance
+ class add{
+  var a=10
+ }
+ class add1 extends add {
+  var c=5
+  var add=a+c
+  def show(): Unit ={
+    println("Addition="+add)
+  }
+ }
+ class sub1 extends add{
+  var d=5
+  var sub=a-d
+  def disp(): Unit ={
+    println("Subtraction="+sub)
+  }
+ }
+ object multiple{
+  def main(args:Array[String]): Unit ={
+    var a= new add1()
+    a.show()
+    var s=new sub1()
+    s.disp()
+  }
+ }
+
+
+
+# Using trait keyword
+
+
+//hierarchical inheritance
+ trait add{
+  var a=10
+ }
+ class add1 extends add {
+  var c=5
+  var add=a+c
+  def show(): Unit ={
+    println("Addition="+add)
+  }
+ }
+ class sub1 extends add{
+  var d=10
+  var sub=a-d
+  def disp(): Unit ={
+    println("Subtraction="+sub)
+  }
+ }
+ object multiple{
+  def main(args:Array[String]): Unit ={
+    var a= new add1()
+    a.show()
+    var s=new sub1()
+    s.disp()
+  }
+ }
+
+
+
+############      Using Final Keywork:
+ A variable with final keyword cannot be override    ###########
+
+
+ class speed {
+ final  var a:Int=30
+ }
+ class bike extends speed{
+ override var a=20
+ def disp(): Unit = {
+ println(a)
+  }
+ }
+ object bike{
+ def main(args:Array[String]):Unit={
+ var b=new bike()
+    b.disp()
+  }
+ }
+
+                                               OR
+
+
+ //Using final keyword
+ class speed {
+ final  var a:Int=30
+ }
+ class bike extends speed{
+ // override var a=20
+ def disp(): Unit = {
+ println(a)
+  }
+ }
+ object bike{
+ def main(args:Array[String]):Unit={
+ var b=new bike()
+    b.disp()
+  }
+ }
+
+
+
+######################    Hybrid Inheritance:
+ Using Multiple and Multi-level Inheritance in hybrid Method     ####################
+
+
+ //Hybrid Inheritance
+ trait number{
+ var a:Int=10
+ }
+ abstract class number1{
+ var b:Int=5
+ def print(): Unit
+ }
+ class sum extends number1 with number{
+ def print(): Unit = {
+ println("Summing the given values....")
+ println("a="+a)
+ println("b="+b)
+  }
+ }
+ class addition extends sum{
+ var add=a+b
+ def show(): Unit = {
+ println("Addition="+add)
+  }
+ }
+ object arithmetic{
+ def main(args:Array[String]): Unit = {
+ var add1=new addition()
+    add1.print()
+    add1.show()
+  }
+ }
+
+
+
+55555555##################        exception Handling    ###################55555555555555555
+
+
+
+import java.io.FileReader
+ import java.io.FileNotFoundException
+ import java.io.IOException
+ object demo {
+  def main(args:Array[String]): Unit = {
+    try {
+      val f = new FileReader("input.txt")
+    } catch {
+      case ex: FileNotFoundException => {
+        println("Missing file exception")
+      }
+    }
+    //2nd exception in the same object
+    try {
+      var n = 45 / 0
+    }
+    catch {
+      case a: ArithmeticException => {
+        println("not correct arithmetics applied")
+      }
+      case b: FileNotFoundException => {
+        println("file missing")
+      }
+      case c: IOException => {
+        println("cannot interpret input or output")
+      }
+    }
+    finally {
+      println("Program executed")
+    }
+  }
+ }
+
+
+
+#Now with proper path we will not get exception
+
+object demo {
+  def main(args: Array[String]): Unit = {
+    try {
+      val f = new FileReader( fileName = "src/demof.txt")
+    } catch {
+      case ex: FileNotFoundException => {
+        println("Missing file exception")
+      }
+    } finally {
+      println("Program executed")
+    }
+  }
+}
+
+
+//explicitly throwing error can be done using throw new
+ class except{
+ def validate(age:Int)={
+ if(age<18)
+ throw new ArithmeticException("Your are no eligible")
+ else println("you are eligible")
+  }
+ }
+ object ex1{
+ def main (args:Array[String]): Unit ={
+ val th=new except()
+    th.validate(12)
+  }
+ }
+
