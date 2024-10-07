@@ -315,6 +315,24 @@ Forecast
 plot(Forecast)
 
 
+#####yahoo finance
+
+library("tidyquant")
+
+options("getSymbols.warning4.0" = FALSE)
+options("getSymbols.yahoo.warning" = FALSE)
+getSymbols("TATAMOTORS.NS",from = "2023-09-01", to = "2024-08-30", warnings = FALSE, auto.assign = TRUE)
+head(TATAMOTORS.NS)
+
+class(TATAMOTORS.NS)
+
+# b. Convert it into time series data
+
+TS = ts(TATAMOTORS.NS$TATAMOTORS.NS.Adjusted, start = 1, frequency = 12)
+
+class(TS)
+
+
 
 ############################################################################
 
